@@ -1,0 +1,62 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://scenes/levels/base_level.gd" id="1"]
+[ext_resource type="PackedScene" path="res://scenes/enemies/shield_soldier.tscn" id="2"]
+[ext_resource type="PackedScene" path="res://scenes/enemies/bomber.tscn" id="3"]
+
+[node name="Level_3_1" type="Node2D"]
+script = ExtResource("1")
+level_name = "熔岩边境"
+world_id = 3
+level_id = 1
+
+[node name="TileMap" type="TileMap" parent="."]
+
+[node name="SpawnPoints" type="Node2D" parent="."]
+
+[node name="MasterSpawn" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(80, 300)
+
+[node name="DiscipleSpawn" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(130, 300)
+
+[node name="Platforms" type="Node2D" parent="."]
+
+[node name="Ground" type="StaticBody2D" parent="Platforms"]
+
+[node name="GroundCol" type="CollisionShape2D" parent="Platforms/Ground"]
+position = Vector2(400, 370)
+
+[node name="LavaBridge" type="StaticBody2D" parent="Platforms"]
+
+[node name="LavaBridgeCol" type="CollisionShape2D" parent="Platforms/LavaBridge"]
+position = Vector2(700, 380)
+
+[node name="RockPlatform" type="StaticBody2D" parent="Platforms"]
+
+[node name="RockPlatformCol" type="CollisionShape2D" parent="Platforms/RockPlatform"]
+position = Vector2(1000, 320)
+
+[node name="Hazards" type="Node2D" parent="."]
+
+[node name="LavaZone" type="Area2D" parent="Hazards"]
+position = Vector2(550, 420)
+collision_layer = 16
+collision_mask = 1
+
+[node name="LavaZoneShape" type="CollisionShape2D" parent="Hazards/LavaZone"]
+
+[node name="Enemies" type="Node2D" parent="."]
+
+[node name="Shield1" parent="Enemies" instance=ExtResource("2")]
+position = Vector2(500, 360)
+
+[node name="Bomber1" parent="Enemies" instance=ExtResource("3")]
+position = Vector2(850, 370)
+
+[node name="GoalArea" type="Area2D" parent="."]
+position = Vector2(1200, 300)
+collision_layer = 0
+collision_mask = 1
+
+[node name="GoalShape" type="CollisionShape2D" parent="GoalArea"]

@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="WeaponData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/combat/weapon.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+weapon_id = "wooden_sword"
+weapon_name = "木剑"
+family = 0
+damage = 8.0
+attack_speed = 1.0
+range_distance = 50.0
+charge_time = 0.0
+description = "剑族入门武器，平衡可靠。每个弟子的第一把剑。"
+price = 0
+max_combo = 3
+combo_damage_multipliers = [1.0, 1.2, 1.5]

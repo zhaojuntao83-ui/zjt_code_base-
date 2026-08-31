@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128">
+  <rect width="128" height="128" rx="16" fill="#1a1a2e"/>
+  <circle cx="42" cy="55" r="22" fill="#e8a87c" stroke="#c9956c" stroke-width="2"/>
+  <text x="42" y="62" text-anchor="middle" fill="#1a1a2e" font-size="20" font-weight="bold">M</text>
+  <circle cx="86" cy="55" r="22" fill="#4a4a5a" stroke="#3a3a4a" stroke-width="2"/>
+  <text x="86" y="62" text-anchor="middle" fill="#aaa" font-size="20" font-weight="bold">E</text>
+  <path d="M52 72 L76 72" stroke="#ffd700" stroke-width="2" stroke-dasharray="4,2"/>
+  <text x="64" y="110" text-anchor="middle" fill="#ffd700" font-size="12">师与影</text>
+</svg>

@@ -1,0 +1,122 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scenes/ui/hud.gd" id="1"]
+
+[node name="HUD" type="CanvasLayer"]
+layer = 10
+script = ExtResource("1")
+
+[node name="TopLeft" type="VBoxContainer" parent="."]
+anchors_preset = 0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 250.0
+offset_bottom = 100.0
+theme_override_constants/separation = 4
+
+[node name="HealthBar" type="ProgressBar" parent="TopLeft"]
+layout_mode = 2
+custom_minimum_size = Vector2(200, 20)
+max_value = 100.0
+value = 100.0
+show_percentage = false
+
+[node name="HealthLabel" type="Label" parent="TopLeft"]
+layout_mode = 2
+text = "HP: 100/100"
+
+[node name="TopRight" type="VBoxContainer" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -250.0
+offset_top = 10.0
+offset_right = -10.0
+offset_bottom = 100.0
+theme_override_constants/separation = 4
+
+[node name="ExpLabel" type="Label" parent="TopRight"]
+layout_mode = 2
+text = "经验: 0"
+horizontal_alignment = 2
+
+[node name="ProgressLabel" type="Label" parent="TopRight"]
+layout_mode = 2
+text = "进度: 0%"
+horizontal_alignment = 2
+
+[node name="ColorIcon" type="ColorRect" parent="TopRight"]
+layout_mode = 2
+custom_minimum_size = Vector2(30, 30)
+color = Color(0.1, 0.1, 0.12, 1)
+
+[node name="TakeoverPanel" type="HBoxContainer" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -150.0
+offset_top = -50.0
+offset_right = 150.0
+offset_bottom = -10.0
+alignment = 1
+theme_override_constants/separation = 10
+
+[node name="ChargeLabel" type="Label" parent="TakeoverPanel"]
+layout_mode = 2
+text = "接管: 3次"
+
+[node name="TimerBar" type="ProgressBar" parent="TakeoverPanel"]
+layout_mode = 2
+custom_minimum_size = Vector2(120, 16)
+max_value = 10.0
+value = 10.0
+show_percentage = false
+
+[node name="CooldownLabel" type="Label" parent="TakeoverPanel"]
+layout_mode = 2
+text = ""
+
+[node name="RecordIndicator" type="Label" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -50.0
+offset_top = 10.0
+offset_right = 50.0
+offset_bottom = 35.0
+text = "● 录制中"
+horizontal_alignment = 1
+visible = false
+
+[node name="MessageLabel" type="Label" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -300.0
+offset_top = -90.0
+offset_right = 300.0
+offset_bottom = -60.0
+text = ""
+horizontal_alignment = 1
+
+[node name="DialogPanel" type="PanelContainer" parent="."]
+visible = false
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -250.0
+offset_top = -160.0
+offset_right = 250.0
+offset_bottom = -100.0
+
+[node name="DialogLabel" type="Label" parent="DialogPanel"]
+layout_mode = 2
+text = ""
+horizontal_alignment = 1
+autowrap_mode = 2

@@ -1,0 +1,85 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scripts/combat/base_boss.gd" id="1"]
+[ext_resource type="Script" path="res://scenes/bosses/fortress_commander.gd" id="2"]
+
+[node name="FortressCommander" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 3
+script = ExtResource("2")
+
+[node name="CollisionShape" type="CollisionShape2D" parent="."]
+position = Vector2(0, -32)
+
+[node name="Sprite" type="Sprite2D" parent="."]
+position = Vector2(0, -32)
+scale = Vector2(1.6, 1.6)
+
+[node name="AnimPlayer" type="AnimationPlayer" parent="."]
+
+[node name="HitBox" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 0
+
+[node name="HitBoxShape" type="CollisionShape2D" parent="HitBox"]
+position = Vector2(30, -28)
+
+[node name="HurtBox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="HurtBoxShape" type="CollisionShape2D" parent="HurtBox"]
+position = Vector2(0, -32)
+
+[node name="DetectionArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 1
+
+[node name="DetectionShape" type="CollisionShape2D" parent="DetectionArea"]
+
+[node name="AOEArea" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 0
+
+[node name="AOEShape" type="CollisionShape2D" parent="AOEArea"]
+disabled = true
+
+[node name="SummonPoints" type="Node2D" parent="."]
+
+[node name="Point1" type="Marker2D" parent="SummonPoints"]
+position = Vector2(-150, 0)
+
+[node name="Point2" type="Marker2D" parent="SummonPoints"]
+position = Vector2(150, 0)
+
+[node name="Point3" type="Marker2D" parent="SummonPoints"]
+position = Vector2(-80, -60)
+
+[node name="WarningZone" type="ColorRect" parent="."]
+visible = false
+color = Color(1, 0.1, 0.1, 0.3)
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+position = Vector2(-50, -75)
+size = Vector2(100, 10)
+max_value = 1000.0
+value = 1000.0
+show_percentage = false
+
+[node name="BossName" type="Label" parent="."]
+position = Vector2(-50, -90)
+size = Vector2(100, 14)
+text = "堡垒指挥官"
+horizontal_alignment = 1
+
+[node name="PhaseIndicator" type="Label" parent="."]
+position = Vector2(-30, -62)
+size = Vector2(60, 12)
+text = "阶段 1/3"
+horizontal_alignment = 1
+
+[node name="MinionCounter" type="Label" parent="."]
+position = Vector2(-30, -50)
+size = Vector2(60, 12)
+text = ""
+horizontal_alignment = 1

@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="WeaponData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/combat/weapon.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+weapon_name = "铁枪"
+family = 1
+damage = 18
+attack_speed = 0.95
+attack_range = 70.0
+charge_time = 0.0
+combo_multipliers = [1.0, 1.15, 1.5]

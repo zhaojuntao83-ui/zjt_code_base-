@@ -1,0 +1,68 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scenes/levels/base_level.gd" id="1"]
+[ext_resource type="PackedScene" path="res://scenes/characters/master.tscn" id="2"]
+
+[node name="Level_1_1" type="Node2D"]
+script = ExtResource("1")
+level_name = "基础跑酷训练"
+world_id = 1
+level_id = 1
+
+[node name="TileMap" type="TileMap" parent="."]
+
+[node name="SpawnPoints" type="Node2D" parent="."]
+
+[node name="MasterSpawn" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(80, 350)
+
+[node name="DiscipleSpawn" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(130, 350)
+
+[node name="Platforms" type="Node2D" parent="."]
+
+[node name="Ground" type="StaticBody2D" parent="Platforms"]
+
+[node name="GroundCol" type="CollisionShape2D" parent="Platforms/Ground"]
+position = Vector2(640, 400)
+
+[node name="Platform1" type="StaticBody2D" parent="Platforms"]
+
+[node name="Platform1Col" type="CollisionShape2D" parent="Platforms/Platform1"]
+position = Vector2(300, 300)
+
+[node name="Platform2" type="StaticBody2D" parent="Platforms"]
+
+[node name="Platform2Col" type="CollisionShape2D" parent="Platforms/Platform2"]
+position = Vector2(500, 240)
+
+[node name="Platform3" type="StaticBody2D" parent="Platforms"]
+
+[node name="Platform3Col" type="CollisionShape2D" parent="Platforms/Platform3"]
+position = Vector2(750, 280)
+
+[node name="Platform4" type="StaticBody2D" parent="Platforms"]
+
+[node name="Platform4Col" type="CollisionShape2D" parent="Platforms/Platform4"]
+position = Vector2(1000, 220)
+
+[node name="Enemies" type="Node2D" parent="."]
+
+[node name="Obstacles" type="Node2D" parent="."]
+
+[node name="GoalArea" type="Area2D" parent="."]
+position = Vector2(1200, 300)
+collision_layer = 0
+collision_mask = 1
+
+[node name="GoalShape" type="CollisionShape2D" parent="GoalArea"]
+
+[node name="GoalFlag" type="Sprite2D" parent="GoalArea"]
+position = Vector2(0, -30)
+
+[node name="Decorations" type="Node2D" parent="."]
+
+[node name="TutorialZone" type="Area2D" parent="."]
+position = Vector2(200, 350)
+collision_layer = 0
+collision_mask = 1

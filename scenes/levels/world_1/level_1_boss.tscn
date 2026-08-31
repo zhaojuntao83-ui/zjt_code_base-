@@ -1,0 +1,73 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scenes/levels/base_level.gd" id="1"]
+[ext_resource type="PackedScene" path="res://scenes/bosses/dojo_guardian.tscn" id="2"]
+
+[node name="Level_1_Boss" type="Node2D"]
+script = ExtResource("1")
+level_name = "道场守护者"
+world_id = 1
+level_id = 6
+is_boss_level = true
+
+[node name="TileMap" type="TileMap" parent="."]
+
+[node name="SpawnPoints" type="Node2D" parent="."]
+
+[node name="MasterSpawn" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(150, 350)
+
+[node name="DiscipleSpawn" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(200, 350)
+
+[node name="BossArena" type="Node2D" parent="."]
+
+[node name="ArenaFloor" type="StaticBody2D" parent="BossArena"]
+
+[node name="FloorCol" type="CollisionShape2D" parent="BossArena/ArenaFloor"]
+position = Vector2(640, 400)
+
+[node name="LeftWall" type="StaticBody2D" parent="BossArena"]
+
+[node name="LeftWallCol" type="CollisionShape2D" parent="BossArena/LeftWall"]
+position = Vector2(50, 250)
+
+[node name="RightWall" type="StaticBody2D" parent="BossArena"]
+
+[node name="RightWallCol" type="CollisionShape2D" parent="BossArena/RightWall"]
+position = Vector2(1230, 250)
+
+[node name="Platform1" type="StaticBody2D" parent="BossArena"]
+
+[node name="Platform1Col" type="CollisionShape2D" parent="BossArena/Platform1"]
+position = Vector2(400, 280)
+
+[node name="Platform2" type="StaticBody2D" parent="BossArena"]
+
+[node name="Platform2Col" type="CollisionShape2D" parent="BossArena/Platform2"]
+position = Vector2(880, 280)
+
+[node name="Boss" parent="." instance=ExtResource("2")]
+position = Vector2(640, 390)
+
+[node name="BossHealthBarUI" type="ProgressBar" parent="."]
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 200.0
+offset_top = 20.0
+offset_right = -200.0
+offset_bottom = 35.0
+max_value = 500.0
+value = 500.0
+show_percentage = false
+
+[node name="BossNameLabel" type="Label" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -80.0
+offset_top = 40.0
+offset_right = 80.0
+offset_bottom = 58.0
+text = "道场守护者"
+horizontal_alignment = 1

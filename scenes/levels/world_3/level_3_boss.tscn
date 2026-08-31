@@ -1,0 +1,85 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scenes/levels/base_level.gd" id="1"]
+[ext_resource type="PackedScene" path="res://scenes/bosses/lava_beast.tscn" id="2"]
+
+[node name="Level_3_Boss" type="Node2D"]
+script = ExtResource("1")
+level_name = "熔岩巨兽"
+world_id = 3
+level_id = 6
+is_boss_level = true
+
+[node name="TileMap" type="TileMap" parent="."]
+
+[node name="SpawnPoints" type="Node2D" parent="."]
+
+[node name="MasterSpawn" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(150, 300)
+
+[node name="DiscipleSpawn" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(200, 300)
+
+[node name="BossArena" type="Node2D" parent="."]
+
+[node name="ArenaFloor" type="StaticBody2D" parent="BossArena"]
+
+[node name="FloorCol" type="CollisionShape2D" parent="BossArena/ArenaFloor"]
+position = Vector2(640, 400)
+
+[node name="LeftWall" type="StaticBody2D" parent="BossArena"]
+
+[node name="LeftWallCol" type="CollisionShape2D" parent="BossArena/LeftWall"]
+position = Vector2(50, 250)
+
+[node name="RightWall" type="StaticBody2D" parent="BossArena"]
+
+[node name="RightWallCol" type="CollisionShape2D" parent="BossArena/RightWall"]
+position = Vector2(1230, 250)
+
+[node name="SafePlatform1" type="StaticBody2D" parent="BossArena"]
+
+[node name="SafePlatform1Col" type="CollisionShape2D" parent="BossArena/SafePlatform1"]
+position = Vector2(300, 260)
+
+[node name="SafePlatform2" type="StaticBody2D" parent="BossArena"]
+
+[node name="SafePlatform2Col" type="CollisionShape2D" parent="BossArena/SafePlatform2"]
+position = Vector2(640, 200)
+
+[node name="SafePlatform3" type="StaticBody2D" parent="BossArena"]
+
+[node name="SafePlatform3Col" type="CollisionShape2D" parent="BossArena/SafePlatform3"]
+position = Vector2(980, 260)
+
+[node name="LavaFloor" type="Area2D" parent="BossArena"]
+position = Vector2(640, 430)
+collision_layer = 16
+collision_mask = 1
+
+[node name="LavaFloorShape" type="CollisionShape2D" parent="BossArena/LavaFloor"]
+
+[node name="Boss" parent="." instance=ExtResource("2")]
+position = Vector2(640, 390)
+
+[node name="BossHealthBarUI" type="ProgressBar" parent="."]
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 200.0
+offset_top = 20.0
+offset_right = -200.0
+offset_bottom = 35.0
+max_value = 800.0
+value = 800.0
+show_percentage = false
+
+[node name="BossNameLabel" type="Label" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -80.0
+offset_top = 40.0
+offset_right = 80.0
+offset_bottom = 58.0
+text = "熔岩巨兽"
+horizontal_alignment = 1

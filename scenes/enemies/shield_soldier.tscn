@@ -1,0 +1,60 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scripts/combat/base_enemy.gd" id="1"]
+[ext_resource type="Script" path="res://scenes/enemies/shield_soldier.gd" id="2"]
+
+[node name="ShieldSoldier" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 3
+script = ExtResource("2")
+
+[node name="CollisionShape" type="CollisionShape2D" parent="."]
+position = Vector2(0, -20)
+
+[node name="Sprite" type="Sprite2D" parent="."]
+position = Vector2(0, -20)
+
+[node name="ShieldSprite" type="Sprite2D" parent="."]
+position = Vector2(12, -20)
+
+[node name="AnimPlayer" type="AnimationPlayer" parent="."]
+
+[node name="HitBox" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 0
+
+[node name="HitBoxShape" type="CollisionShape2D" parent="HitBox"]
+position = Vector2(20, -18)
+
+[node name="HurtBox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="HurtBoxShape" type="CollisionShape2D" parent="HurtBox"]
+position = Vector2(0, -20)
+
+[node name="ShieldBox" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 0
+
+[node name="ShieldShape" type="CollisionShape2D" parent="ShieldBox"]
+position = Vector2(14, -20)
+
+[node name="DetectionArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 1
+
+[node name="DetectionShape" type="CollisionShape2D" parent="DetectionArea"]
+
+[node name="WarningIndicator" type="ColorRect" parent="."]
+visible = false
+position = Vector2(-15, -55)
+size = Vector2(30, 4)
+color = Color(1, 0.2, 0.2, 0.8)
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+position = Vector2(-20, -60)
+size = Vector2(40, 5)
+max_value = 150.0
+value = 150.0
+show_percentage = false

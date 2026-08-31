@@ -1,0 +1,70 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scripts/combat/base_boss.gd" id="1"]
+[ext_resource type="Script" path="res://scenes/bosses/dojo_guardian.gd" id="2"]
+
+[node name="DojoGuardian" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 3
+script = ExtResource("2")
+
+[node name="CollisionShape" type="CollisionShape2D" parent="."]
+position = Vector2(0, -30)
+
+[node name="Sprite" type="Sprite2D" parent="."]
+position = Vector2(0, -30)
+scale = Vector2(1.5, 1.5)
+
+[node name="AnimPlayer" type="AnimationPlayer" parent="."]
+
+[node name="HitBox" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 0
+
+[node name="HitBoxShape" type="CollisionShape2D" parent="HitBox"]
+position = Vector2(30, -25)
+
+[node name="HurtBox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="HurtBoxShape" type="CollisionShape2D" parent="HurtBox"]
+position = Vector2(0, -30)
+
+[node name="DetectionArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 1
+
+[node name="DetectionShape" type="CollisionShape2D" parent="DetectionArea"]
+
+[node name="AOEArea" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 0
+
+[node name="AOEShape" type="CollisionShape2D" parent="AOEArea"]
+disabled = true
+
+[node name="WarningZone" type="ColorRect" parent="."]
+visible = false
+position = Vector2(-60, -5)
+size = Vector2(120, 10)
+color = Color(1, 0.1, 0.1, 0.3)
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+position = Vector2(-40, -70)
+size = Vector2(80, 8)
+max_value = 500.0
+value = 500.0
+show_percentage = false
+
+[node name="BossName" type="Label" parent="."]
+position = Vector2(-40, -82)
+size = Vector2(80, 14)
+text = "道场守护者"
+horizontal_alignment = 1
+
+[node name="PhaseIndicator" type="Label" parent="."]
+position = Vector2(-30, -58)
+size = Vector2(60, 12)
+text = "阶段 1"
+horizontal_alignment = 1

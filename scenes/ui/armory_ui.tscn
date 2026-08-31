@@ -1,0 +1,86 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scenes/ui/armory_ui.gd" id="1"]
+
+[node name="ArmoryUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource("1")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0.07, 0.07, 0.1, 1)
+
+[node name="TopBar" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 40.0
+
+[node name="BackBtn" type="Button" parent="TopBar"]
+layout_mode = 2
+text = "< 返回"
+
+[node name="Title" type="Label" parent="TopBar"]
+layout_mode = 2
+text = "武器库"
+size_flags_horizontal = 3
+
+[node name="HSplit" type="HSplitContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 50.0
+
+[node name="Left" type="VBoxContainer" parent="HSplit"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.5
+
+[node name="WeaponList" type="VBoxContainer" parent="HSplit/Left"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 6
+
+[node name="ArmorList" type="VBoxContainer" parent="HSplit/Left"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 6
+
+[node name="Right" type="VBoxContainer" parent="HSplit"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.5
+
+[node name="DetailPanel" type="VBoxContainer" parent="HSplit/Right"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 8
+
+[node name="FamilyInfo" type="Label" parent="HSplit/Right/DetailPanel"]
+layout_mode = 2
+text = "武器族信息"
+
+[node name="WeaponName" type="Label" parent="HSplit/Right/DetailPanel"]
+layout_mode = 2
+text = "选择一件装备"
+
+[node name="WeaponStats" type="Label" parent="HSplit/Right/DetailPanel"]
+layout_mode = 2
+text = ""
+
+[node name="TransferInfo" type="Label" parent="HSplit/Right/DetailPanel"]
+layout_mode = 2
+text = ""
+autowrap_mode = 2
+
+[node name="EquipBtn" type="Button" parent="HSplit/Right"]
+layout_mode = 2
+disabled = true
+text = "装备"

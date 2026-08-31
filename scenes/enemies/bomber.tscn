@@ -1,0 +1,60 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scripts/combat/base_enemy.gd" id="1"]
+[ext_resource type="Script" path="res://scenes/enemies/bomber.gd" id="2"]
+
+[node name="Bomber" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 3
+script = ExtResource("2")
+
+[node name="CollisionShape" type="CollisionShape2D" parent="."]
+position = Vector2(0, -18)
+
+[node name="Sprite" type="Sprite2D" parent="."]
+position = Vector2(0, -18)
+
+[node name="AnimPlayer" type="AnimationPlayer" parent="."]
+
+[node name="HitBox" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 0
+
+[node name="HitBoxShape" type="CollisionShape2D" parent="HitBox"]
+position = Vector2(16, -18)
+
+[node name="HurtBox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="HurtBoxShape" type="CollisionShape2D" parent="HurtBox"]
+position = Vector2(0, -18)
+
+[node name="DetectionArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 1
+
+[node name="DetectionShape" type="CollisionShape2D" parent="DetectionArea"]
+
+[node name="BombWarning" type="Node2D" parent="."]
+
+[node name="WarningCircle" type="Sprite2D" parent="BombWarning"]
+visible = false
+modulate = Color(1, 0.2, 0.2, 0.4)
+
+[node name="ThrowTimer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = false
+
+[node name="WarningIndicator" type="ColorRect" parent="."]
+visible = false
+position = Vector2(-15, -50)
+size = Vector2(30, 4)
+color = Color(1, 0.2, 0.2, 0.8)
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+position = Vector2(-20, -55)
+size = Vector2(40, 5)
+max_value = 70.0
+value = 70.0
+show_percentage = false

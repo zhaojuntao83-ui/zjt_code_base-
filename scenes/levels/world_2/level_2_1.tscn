@@ -1,0 +1,57 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scenes/levels/base_level.gd" id="1"]
+[ext_resource type="PackedScene" path="res://scenes/enemies/archer.tscn" id="2"]
+
+[node name="Level_2_1" type="Node2D"]
+script = ExtResource("1")
+level_name = "城镇边缘"
+world_id = 2
+level_id = 1
+
+[node name="TileMap" type="TileMap" parent="."]
+
+[node name="SpawnPoints" type="Node2D" parent="."]
+
+[node name="MasterSpawn" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(80, 350)
+
+[node name="DiscipleSpawn" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(130, 350)
+
+[node name="Platforms" type="Node2D" parent="."]
+
+[node name="Ground" type="StaticBody2D" parent="Platforms"]
+
+[node name="GroundCol" type="CollisionShape2D" parent="Platforms/Ground"]
+position = Vector2(640, 400)
+
+[node name="Rooftop1" type="StaticBody2D" parent="Platforms"]
+
+[node name="Rooftop1Col" type="CollisionShape2D" parent="Platforms/Rooftop1"]
+position = Vector2(350, 260)
+
+[node name="Rooftop2" type="StaticBody2D" parent="Platforms"]
+
+[node name="Rooftop2Col" type="CollisionShape2D" parent="Platforms/Rooftop2"]
+position = Vector2(650, 200)
+
+[node name="Rooftop3" type="StaticBody2D" parent="Platforms"]
+
+[node name="Rooftop3Col" type="CollisionShape2D" parent="Platforms/Rooftop3"]
+position = Vector2(950, 240)
+
+[node name="Enemies" type="Node2D" parent="."]
+
+[node name="Archer1" parent="Enemies" instance=ExtResource("2")]
+position = Vector2(500, 250)
+
+[node name="Archer2" parent="Enemies" instance=ExtResource("2")]
+position = Vector2(800, 190)
+
+[node name="GoalArea" type="Area2D" parent="."]
+position = Vector2(1200, 300)
+collision_layer = 0
+collision_mask = 1
+
+[node name="GoalShape" type="CollisionShape2D" parent="GoalArea"]

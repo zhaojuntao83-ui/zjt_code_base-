@@ -1,0 +1,75 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scripts/combat/base_boss.gd" id="1"]
+[ext_resource type="Script" path="res://scenes/bosses/lava_beast.gd" id="2"]
+
+[node name="LavaBeast" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 3
+script = ExtResource("2")
+
+[node name="CollisionShape" type="CollisionShape2D" parent="."]
+position = Vector2(0, -35)
+
+[node name="Sprite" type="Sprite2D" parent="."]
+position = Vector2(0, -35)
+scale = Vector2(1.8, 1.8)
+
+[node name="AnimPlayer" type="AnimationPlayer" parent="."]
+
+[node name="HitBox" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 0
+
+[node name="HitBoxShape" type="CollisionShape2D" parent="HitBox"]
+position = Vector2(35, -30)
+
+[node name="HurtBox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="HurtBoxShape" type="CollisionShape2D" parent="HurtBox"]
+position = Vector2(0, -35)
+
+[node name="DetectionArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 1
+
+[node name="DetectionShape" type="CollisionShape2D" parent="DetectionArea"]
+
+[node name="AOEArea" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 0
+
+[node name="AOEShape" type="CollisionShape2D" parent="AOEArea"]
+disabled = true
+
+[node name="LavaPool" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 0
+
+[node name="LavaPoolShape" type="CollisionShape2D" parent="LavaPool"]
+disabled = true
+
+[node name="WarningZone" type="ColorRect" parent="."]
+visible = false
+color = Color(1, 0.3, 0.0, 0.3)
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+position = Vector2(-45, -80)
+size = Vector2(90, 8)
+max_value = 800.0
+value = 800.0
+show_percentage = false
+
+[node name="BossName" type="Label" parent="."]
+position = Vector2(-45, -94)
+size = Vector2(90, 14)
+text = "熔岩巨兽"
+horizontal_alignment = 1
+
+[node name="PhaseIndicator" type="Label" parent="."]
+position = Vector2(-30, -66)
+size = Vector2(60, 12)
+text = "阶段 1"
+horizontal_alignment = 1

@@ -1,0 +1,96 @@
+[gd_scene load_steps=13 format=3]
+
+[ext_resource type="Script" path="res://scripts/characters/master.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/characters/state_machine.gd" id="2"]
+[ext_resource type="Script" path="res://scripts/characters/states/idle_state.gd" id="3"]
+[ext_resource type="Script" path="res://scripts/characters/states/run_state.gd" id="4"]
+[ext_resource type="Script" path="res://scripts/characters/states/jump_state.gd" id="5"]
+[ext_resource type="Script" path="res://scripts/characters/states/fall_state.gd" id="6"]
+[ext_resource type="Script" path="res://scripts/characters/states/crouch_state.gd" id="7"]
+[ext_resource type="Script" path="res://scripts/characters/states/slide_state.gd" id="8"]
+[ext_resource type="Script" path="res://scripts/characters/states/attack_state.gd" id="9"]
+[ext_resource type="Script" path="res://scripts/characters/states/block_state.gd" id="10"]
+[ext_resource type="Script" path="res://scripts/characters/states/dodge_state.gd" id="11"]
+[ext_resource type="Script" path="res://scripts/characters/states/air_attack_state.gd" id="12"]
+
+[node name="Master" type="CharacterBody2D"]
+collision_layer = 1
+collision_mask = 6
+script = ExtResource("1")
+
+[node name="CollisionShape" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_master")
+position = Vector2(0, -20)
+
+[node name="Sprite" type="Sprite2D" parent="."]
+position = Vector2(0, -20)
+
+[node name="AnimPlayer" type="AnimationPlayer" parent="."]
+
+[node name="HitBox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="HitBoxShape" type="CollisionShape2D" parent="HitBox"]
+shape = SubResource("RectangleShape2D_hitbox")
+position = Vector2(20, -20)
+disabled = true
+
+[node name="HurtBox" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 0
+
+[node name="HurtBoxShape" type="CollisionShape2D" parent="HurtBox"]
+shape = SubResource("RectangleShape2D_hurtbox")
+position = Vector2(0, -20)
+
+[node name="StateMachine" type="Node" parent="."]
+script = ExtResource("2")
+
+[node name="Idle" type="Node" parent="StateMachine"]
+script = ExtResource("3")
+
+[node name="Run" type="Node" parent="StateMachine"]
+script = ExtResource("4")
+
+[node name="Jump" type="Node" parent="StateMachine"]
+script = ExtResource("5")
+
+[node name="Fall" type="Node" parent="StateMachine"]
+script = ExtResource("6")
+
+[node name="Crouch" type="Node" parent="StateMachine"]
+script = ExtResource("7")
+
+[node name="Slide" type="Node" parent="StateMachine"]
+script = ExtResource("8")
+
+[node name="Attack" type="Node" parent="StateMachine"]
+script = ExtResource("9")
+
+[node name="Block" type="Node" parent="StateMachine"]
+script = ExtResource("10")
+
+[node name="Dodge" type="Node" parent="StateMachine"]
+script = ExtResource("11")
+
+[node name="AirAttack" type="Node" parent="StateMachine"]
+script = ExtResource("12")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(0, -40)
+zoom = Vector2(1.5, 1.5)
+position_smoothing_enabled = true
+position_smoothing_speed = 8.0
+
+[node name="RayCastLeft" type="RayCast2D" parent="."]
+target_position = Vector2(-50, 0)
+collision_mask = 4
+
+[node name="RayCastRight" type="RayCast2D" parent="."]
+target_position = Vector2(50, 0)
+collision_mask = 4
+
+[node name="RayCastDown" type="RayCast2D" parent="."]
+target_position = Vector2(0, 60)
+collision_mask = 2
